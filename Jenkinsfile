@@ -1,6 +1,7 @@
 def version = '0.0.0-UNKNOWN'
 
-def gitUrl = 'git@bitbucket.org:htl-md/contentservice.git'
+def gitCredentials = 'bitbucket-tuw'
+def gitUrl = 'git@bitbucket.org:htl-md/tuwelsolutions.git'
 def dockerImageName = 'tuwelsolution'
 def dllName = 'TuwelSolution.dll'
 def hasPackage = false
@@ -57,7 +58,7 @@ podTemplate(yaml:'''
     node(POD_LABEL) {
         stage('Pull Git Repo') {
             git url: gitUrl, 
-                credentialsId: 'bitbucket-schooldirector'
+                credentialsId: gitCredentials
             container('dotnet6') {
                 stage('Set Project version') {
                     script {
